@@ -4,7 +4,7 @@
  * 1. Global this - this keyword refers to the window object
  * 2. Implicit this - whenever a method is called on an object this keyword refers to whatever is to the left of the dot.
  * 3. New this - when a constructor function is created this keyword refers to the instance of an object that is returned from the constructor function using the new keyword.
- * 4. Explicit this - when the call or apply methods are used on a function the context of this is passed into call or apply.
+ * 4. Explicit this - when the call or apply methods are used on a function the context of this is passed into call or apply along with arguments.
  *
  * write out a code example of each explanation above
  */
