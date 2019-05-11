@@ -139,3 +139,74 @@ console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.
 // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
 // * Create two new objects, one a villain and one a hero and fight it out with methods!
+
+/////////// Villain constructor
+function Villain(villainAttr) {
+  Humanoid.call(this, villainAttr);
+}
+
+Villain.prototype = Object.create(Humanoid.prototype);
+
+Villain.prototype.lightSaberStrike = function() {
+  this.healthPoints = this.healthPoints - 10;
+
+  if (this.healthPoints <= 0) {
+    return `${this.name} was hit with a light saber and has ${
+      this.healthPoints
+    } health points and is removed from the game.`;
+  } else {
+    return `${this.name} was hit with a laser blast and only has ${
+      this.healthPoints
+    } health points left.`;
+  }
+};
+
+/////////// Hero constructor
+function Hero(heroAttr) {
+  Humanoid.call(this, heroAttr);
+}
+
+Hero.prototype = Object.create(Humanoid.prototype);
+
+Hero.prototype.laserBlast = function() {
+  this.healthPoints = this.healthPoints - 10;
+
+  if (this.healthPoints <= 0) {
+    return `${this.name} was hit with a light saber and has ${
+      this.healthPoints
+    } health points and is removed from the game`;
+  } else {
+    return `${this.name} was hit with a laser blast and only has ${
+      this.healthPoints
+    } health points left.`;
+  }
+};
+
+const villain = new Villain({
+  createdAt: new Date(),
+  dimensions: {
+    length: 4,
+    width: 5,
+    height: 8
+  },
+  healthPoints: 10,
+  name: 'Storm Trooper',
+  team: 'Empire',
+  weapons: 'Blaster'
+});
+
+const hero = new Hero({
+  createdAt: new Date(),
+  dimensions: {
+    length: 3,
+    width: 4,
+    height: 7
+  },
+  healthPoints: 15,
+  name: 'Jedi',
+  team: 'Rebel Alliance',
+  weapons: 'Light Saber'
+});
+
+console.log(villain.lightSaberStrike());
+console.log(hero.laserBlast());
